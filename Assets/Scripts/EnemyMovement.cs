@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
 {
 
     int health;
+    public bool eDeath;
 
     private Rigidbody2D rigidBody2D;
 
@@ -18,6 +19,7 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         health = 2000;
+        eDeath = false;
     }
 
     // Update is called once per frame
@@ -36,6 +38,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (health <= 0)
         {
+            eDeath = true;
             gameObject.SetActive(false);
         }
 

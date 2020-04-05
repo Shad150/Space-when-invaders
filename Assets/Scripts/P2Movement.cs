@@ -5,6 +5,7 @@ using UnityEngine;
 public class P2Movement : MonoBehaviour
 {
     int health;
+    public bool p2Death;
 
     public float speed;
 
@@ -16,6 +17,7 @@ public class P2Movement : MonoBehaviour
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
         health = 150;
+        p2Death = false;
     }
 
     // Update is called once per frame
@@ -37,7 +39,9 @@ public class P2Movement : MonoBehaviour
 
         if (health <= 0)
         {
+            p2Death = true;
             Destroy(gameObject);
+            
         }
 
     }

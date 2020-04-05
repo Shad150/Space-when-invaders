@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     int health;
+    public bool pDeath;
 
     public float speed;
 
@@ -16,6 +17,7 @@ public class Movement : MonoBehaviour
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
         health = 150;
+        pDeath = false;
     }
 
     // Update is called once per frame
@@ -38,6 +40,7 @@ public class Movement : MonoBehaviour
         if (health <= 0)
         {
             gameObject.SetActive(false);
+            pDeath = true;
         }
 
     }
@@ -46,7 +49,8 @@ public class Movement : MonoBehaviour
     {
         if (collision.CompareTag("Kill"))
         {
-            gameObject.SetActive(false);
+            health = 0;
+            pDeath = true;
         }
         else if (collision.CompareTag("PVP"))
         {
@@ -68,4 +72,5 @@ public class Movement : MonoBehaviour
     {
         rigidBody2D.AddForce(direction * speed);
     }
+
 }
